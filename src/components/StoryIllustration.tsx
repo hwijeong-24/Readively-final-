@@ -1,6 +1,6 @@
 import React from 'react';
 
-const imageFiles = import.meta.glob('../../assets/images/*', {
+const imageFiles = import.meta.glob('/src/assets/images/*', {
   eager: true,
   query: '?url',
   import: 'default',
