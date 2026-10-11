@@ -1,0 +1,10 @@
+{
+  "name": "Readively",
+  "description": "Interactive English picture-book reading app with reverse echo reading, counterpoint picture inferences, tap-a-word bank, and feeling reflection.",
+  "requestFramePermissions": [
+    "microphone"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
