@@ -1,5 +1,17 @@
 import React from 'react';
 
+const imageFiles = import.meta.glob('../../assets/images/*', {
+  eager: true,
+  query: '?url',
+  import: 'default',
+}) as Record<string, string>;
+
+const resolveImage = (path: string): string => {
+  const fileName = path.split('/').pop() || '';
+  const key = Object.keys(imageFiles).find((k) => k.endsWith('/' + fileName));
+  return key ? imageFiles[key] : path;
+};
+
 export interface StoryIllustrationProps {
   pageNumber: number | 'cover' | 'result';
   className?: string;
