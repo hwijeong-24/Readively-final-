@@ -1,7 +1,8 @@
 export interface WordDefinition {
   word: string;
+  matchText?: string;
   korean: string;
-  phonetic: string;
+  phonetic?: string;
   meaningEn: string;
   exampleSentence: string;
   iconName: string;

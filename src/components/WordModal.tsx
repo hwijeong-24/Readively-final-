@@ -86,15 +86,10 @@ export const WordModal: React.FC<WordModalProps> = ({
             <IconComponent className="w-7 h-7" />
           </div>
           <div className="flex-1 min-w-0">
-            <div className="flex items-baseline gap-2">
-              <h3 className="text-2xl font-bold tracking-tight text-slate-900 capitalize font-story">
-                {word.word}
-              </h3>
-              <span className="text-xs text-slate-400 font-mono">
-                {word.phonetic}
-              </span>
-            </div>
-            <p className="text-base font-bold text-amber-700 font-korean mt-0.5">
+            <h3 className="text-2xl font-bold tracking-tight text-slate-900 capitalize font-story">
+              {word.word}
+            </h3>
+            <p className="text-base font-bold text-amber-700 font-korean mt-1">
               {word.korean}
             </p>
           </div>

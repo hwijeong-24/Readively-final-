@@ -243,11 +243,13 @@ export const StoryPageScreen: React.FC<StoryPageScreenProps> = ({
     const text = sentence.text;
     
     // Sort words by phrase length descending so multi-word phrases match first
-    const sortedDefs = [...page.underlinedWords].sort((a, b) => b.word.length - a.word.length);
+    const sortedDefs = [...page.underlinedWords].sort(
+      (a, b) => (b.matchText || b.word).length - (a.matchText || a.word).length
+    );
 
     // Escape regex special chars and build word/phrase pattern
     const pattern = sortedDefs
-      .map(w => w.word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'))
+      .map((w) => (w.matchText || w.word).replace(/[.*+?^${}()|[\]\\]/g, '\\$&'))
       .join('|');
 
     if (!pattern) {
@@ -270,7 +272,7 @@ export const StoryPageScreen: React.FC<StoryPageScreenProps> = ({
 
       const matchedText = match[0];
       const matchedDef = sortedDefs.find(
-        w => w.word.toLowerCase() === matchedText.toLowerCase()
+        (w) => (w.matchText || w.word).toLowerCase() === matchedText.toLowerCase()
       );
 
       if (matchedDef) {

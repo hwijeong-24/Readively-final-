@@ -78,7 +78,8 @@ export const QuestionScreen: React.FC<QuestionScreenProps> = ({
       <h2 className="text-lg sm:text-xl font-bold text-slate-900 leading-snug font-story">
         {words.map((chunk, i) => {
           const lower = chunk.toLowerCase().trim();
-          if (targetWord && (lower === targetWord.word.toLowerCase() || lower.startsWith(targetWord.word.toLowerCase()))) {
+          const matchKey = (targetWord?.matchText || targetWord?.word || '').toLowerCase();
+          if (targetWord && (lower === matchKey || (matchKey && lower.startsWith(matchKey)))) {
             const isSaved = savedWordMap.has(targetWord.word.toLowerCase());
             return (
               <button

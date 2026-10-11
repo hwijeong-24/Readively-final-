@@ -93,18 +93,15 @@ export const WordBankModal: React.FC<WordBankModalProps> = ({
                 className="bg-amber-50/50 hover:bg-amber-50 rounded-2xl p-3.5 border border-amber-100 flex items-center justify-between gap-3 transition-colors"
               >
                 <div className="flex-1 min-w-0">
-                  <div className="flex items-baseline gap-2">
+                  <div className="flex items-center gap-2 flex-wrap">
                     <span className="text-lg font-bold text-slate-900 font-story capitalize">
                       {item.word}
                     </span>
-                    <span className="text-xs text-slate-400 font-mono">
-                      {item.phonetic}
-                    </span>
-                    <span className="text-xs text-amber-700/80 bg-white/80 px-1.5 py-0.5 rounded border border-amber-200/60">
+                    <span className="text-xs text-amber-800 bg-amber-100/90 px-2 py-0.5 rounded-full border border-amber-200/80 font-medium font-sans">
                       Page {item.pageNumber}
                     </span>
                   </div>
-                  <p className="text-sm font-bold text-amber-700 font-korean mt-0.5">
+                  <p className="text-sm font-bold text-amber-700 font-korean mt-1">
                     {item.korean}
                   </p>
                   <p className="text-xs text-slate-600 truncate mt-1">
