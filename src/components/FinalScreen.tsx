@@ -2,6 +2,7 @@ import React from 'react';
 import { RotateCcw, BookOpen } from 'lucide-react';
 import { sounds } from '../utils/soundEffects';
 import { MaxDog } from './MaxDog';
+import { StoryIllustration } from './StoryIllustration';
 
 interface FinalScreenProps {
   badgeCount: number;
@@ -27,12 +28,7 @@ export const FinalScreen: React.FC<FinalScreenProps> = ({
       {/* Hero Badge & Message with shared MaxDog illustration */}
       <div className="my-auto py-2 space-y-3">
         <div className="w-full max-w-[280px] sm:max-w-[320px] aspect-[4/3] mx-auto rounded-3xl overflow-hidden shadow-md border-2 border-amber-300">
-          <img
-            src="/src/assets/images/result_max_celebrate_1791733534670.jpg"
-            alt="Max celebrating with medal"
-            referrerPolicy="no-referrer"
-            className="w-full h-full object-cover"
-          />
+        <StoryIllustration pageNumber="result" aspectRatio="4/3" />
         </div>
         <h1 className="text-3xl font-black text-slate-900 font-story">
           Super Reader!
