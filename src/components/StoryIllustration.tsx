@@ -64,7 +64,7 @@ const ILLUSTRATIONS: Record<string | number, { src: string; alt: string }> = {
     alt: 'Max the golden puppy and the sweet orange tabby cat curled up fast asleep nose-to-nose on a colorful patchwork quilt',
   },
   result: {
-    src: '/src/assets/images/result_max_celebrate_1791733534670.jpg',
+    src: '/src/assets/images/result_max_celebrate_1791733534670.jpg', 
     alt: 'Max the golden puppy proudly celebrating with a shiny gold star medal and colorful confetti ribbons',
   },
 };
