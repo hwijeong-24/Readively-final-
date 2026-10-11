@@ -14,6 +14,7 @@ import {
 } from '../utils/speech';
 import { sounds } from '../utils/soundEffects';
 import { MaxDog } from './MaxDog';
+import { StoryIllustration } from './StoryIllustration';
 
 interface ResultScreenProps {
   score: number;
@@ -213,12 +214,7 @@ export const ResultScreen: React.FC<ResultScreenProps> = ({
       {/* Celebration Heading with shared MaxDog illustration */}
       <div className="text-center space-y-2 py-1">
         <div className="w-full max-w-[280px] sm:max-w-[320px] aspect-[4/3] mx-auto rounded-3xl overflow-hidden shadow-md border-2 border-amber-300">
-          <img
-            src="/src/assets/images/result_max_celebrate_1791733534670.jpg"
-            alt="Max celebrating with medal"
-            referrerPolicy="no-referrer"
-            className="w-full h-full object-cover"
-          />
+        <StoryIllustration pageNumber="result" aspectRatio="4/3" />
         </div>
         <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 font-story">
           You finished the story!
