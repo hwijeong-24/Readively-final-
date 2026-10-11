@@ -95,7 +95,7 @@ export const StoryIllustration: React.FC<StoryIllustrationProps> = ({
       className={`relative w-full ${aspectClass} overflow-hidden rounded-2xl bg-amber-50 select-none shadow-sm ${className}`}
     >
       <img
-        src={item.src}
+        src={resolveImage(item.src)}
         alt={item.alt}
         referrerPolicy="no-referrer"
         className="w-full h-full object-cover transition-opacity duration-300"
