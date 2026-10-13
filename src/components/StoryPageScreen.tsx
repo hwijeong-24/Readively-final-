@@ -189,11 +189,13 @@ export const StoryPageScreen: React.FC<StoryPageScreenProps> = ({
     }
 
     const target = page.sentences[sentenceIndex] || page.sentences[0];
-    // Extract key words ONLY belonging to THIS specific target sentence (supports phrases like "jumps in")
+    // Extract key words ONLY belonging to THIS specific target sentence
     const targetTokens = new Set(target.text.toLowerCase().replace(/[^a-z0-9\s]/g, ' ').split(/\s+/).filter(Boolean));
-    const keyWordStrings = page.underlinedWords
-      .filter((w) => w.word.toLowerCase().split(/\s+/).every(tok => targetTokens.has(tok)))
-      .map((w) => w.word);
+    const keyWordStrings = target.practiceWords && target.practiceWords.length > 0
+      ? target.practiceWords
+      : page.underlinedWords
+          .filter((w) => (w.matchText || w.word).toLowerCase().split(/\s+/).every(tok => targetTokens.has(tok)))
+          .map((w) => w.matchText || w.word);
 
     const feedback = await evaluateReading(
       target.text,
@@ -202,13 +204,18 @@ export const StoryPageScreen: React.FC<StoryPageScreenProps> = ({
       audioResult.blobUrl || undefined
     );
 
-    // Strictly ensure practice words belong ONLY to THIS sentence
-    const sanitizedPracticeWords = (feedback.practiceWords || []).filter((w) =>
-      w.toLowerCase().split(/\s+/).every(tok => targetTokens.has(tok))
-    );
-    feedback.practiceWords = sanitizedPracticeWords.length > 0
-      ? sanitizedPracticeWords.slice(0, 2)
-      : keyWordStrings.slice(0, 2);
+    // Strictly ensure practice words belong to this sentence or use fixed practice words
+    if (target.practiceWords && target.practiceWords.length > 0) {
+      feedback.practiceWords = target.practiceWords;
+      feedback.koreanTip = `"${target.practiceWords.join(', ')}" 발음에 유의하며 큰 소리로 따라 해보세요!`;
+    } else {
+      const sanitizedPracticeWords = (feedback.practiceWords || []).filter((w) =>
+        w.toLowerCase().split(/\s+/).every(tok => targetTokens.has(tok))
+      );
+      feedback.practiceWords = sanitizedPracticeWords.length > 0
+        ? sanitizedPracticeWords.slice(0, 2)
+        : keyWordStrings.slice(0, 2);
+    }
 
     setIsEvaluating(false);
     setActiveSentenceIndex(sentenceIndex);
@@ -474,7 +481,7 @@ export const StoryPageScreen: React.FC<StoryPageScreenProps> = ({
 
               return (
                 <div className="flex items-center gap-2 flex-wrap text-sm">
-                  <span className="text-slate-500 text-xs font-medium">연습할 단어:</span>
+                  <span className="text-slate-600 text-xs font-semibold font-korean">유의하며 읽을 단어:</span>
                   {sentenceSpecificPracticeWords.map((word, i) => (
                     <button
                       key={i}

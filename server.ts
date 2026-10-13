@@ -42,13 +42,19 @@ async function startServer() {
         return res.status(400).json({ error: 'targetSentence is required' });
       }
 
-      // If Gemini AI client is available, get real AI coach feedback
+      // Target sentence tokens
+      const targetTokens = new Set<string>(targetSentence.toLowerCase().replace(/[^a-z0-9\s]/g, ' ').split(/\s+/).filter(Boolean));
+      const validKeyWords = (keyWords || []).filter((w: string) =>
+        w.toLowerCase().split(/\s+/).every((tok) => targetTokens.has(tok))
+      );
+
+      // If Gemini AI client is available, attempt AI coach feedback
       if (ai) {
         try {
           const prompt = `You are a warm, encouraging English reading coach for a 5th-6th grade elementary school student in South Korea (CEFR A1 level).
 The student is reading this sentence from a counterpointing picture book: "${targetSentence}"
 The student's speech recognition transcript was: "${studentTranscript || '(silence or unclear)'}"
-Key target vocabulary words in this specific sentence: ${JSON.stringify(keyWords)}
+Key target vocabulary words in this specific sentence: ${JSON.stringify(validKeyWords)}
 
 Evaluate the reading and return JSON with:
 1. "practiceWords": an array of 1 or 2 specific words ONLY from this target sentence "${targetSentence}" that the student should practice or focus on. Do NOT include words that are not in this target sentence.
@@ -60,7 +66,7 @@ Evaluate the reading and return JSON with:
 Respond ONLY with valid JSON.`;
 
           const response = await ai.models.generateContent({
-            model: 'gemini-3.8-flash',
+            model: 'gemini-2.5-flash',
             contents: prompt,
             config: {
               responseMimeType: 'application/json',
@@ -69,24 +75,24 @@ Respond ONLY with valid JSON.`;
 
           if (response.text) {
             const parsed = JSON.parse(response.text.trim());
-            const returnedWords = Array.isArray(parsed.practiceWords) ? parsed.practiceWords : keyWords;
-            const targetTokens = new Set<string>(targetSentence.toLowerCase().replace(/[^a-z0-9\s]/g, ' ').split(/\s+/).filter(Boolean));
+            const returnedWords = Array.isArray(parsed.practiceWords) ? parsed.practiceWords : validKeyWords;
             const validWords = returnedWords.filter((w: string) => targetTokens.has(w.toLowerCase().trim()));
-            const validKeyWords = keyWords.filter((w: string) => targetTokens.has(w.toLowerCase().trim()));
             const fallbackWords = Array.from<string>(targetTokens).filter((w: string) => !['a', 'an', 'the', 'is', 'in', 'on', 'at', 'to', 'he', 'she', 'it'].includes(w));
-            const finalWords = (validWords.length > 0 ? validWords : validKeyWords.length > 0 ? validKeyWords : fallbackWords).slice(0, 2);
+            const finalWords = (validKeyWords.length > 0 ? validKeyWords : validWords.length > 0 ? validWords : fallbackWords).slice(0, 2);
 
             return res.json({
               practiceWords: finalWords,
               feedbackMessage: parsed.feedbackMessage || 'Great effort! Listen to the model reading and try once more!',
-              koreanTip: parsed.koreanTip || '원어민 소리를 듣고 단어를 자신감 있게 따라 읽어보세요!',
+              koreanTip: validKeyWords.length > 0
+                ? `"${validKeyWords.join(', ')}" 발음에 유의하며 큰 소리로 따라 해보세요!`
+                : (parsed.koreanTip || '원어민 소리를 듣고 단어를 자신감 있게 따라 읽어보세요!'),
               rating: parsed.rating || 5,
               allWordsMatched: parsed.allWordsMatched ?? true,
               source: 'gemini',
             });
           }
-        } catch (aiError) {
-          console.warn('Gemini evaluation fallback to heuristic:', aiError);
+        } catch {
+          // Graceful silent fallback to heuristic without error logs
         }
       }
 
@@ -96,7 +102,6 @@ Respond ONLY with valid JSON.`;
       const spokenWords = (studentTranscript || '').toLowerCase().replace(/[^a-z0-9\s]/g, ' ').split(/\s+/).filter(Boolean);
       const targetWordsSignificant = targetWords.filter((w: string) => !['a', 'an', 'the', 'is', 'in', 'on', 'at', 'to', 'he', 'she', 'it'].includes(w));
       const missedWords = targetWordsSignificant.filter((w: string) => !spokenWords.includes(w));
-      const validKeyWords = keyWords.filter((w: string) => targetWordTokens.has(w.toLowerCase().trim()));
       const practiceWords = (validKeyWords.length > 0 ? validKeyWords : (missedWords.length > 0 ? missedWords : targetWordsSignificant.length > 0 ? targetWordsSignificant : targetWords)).slice(0, 2);
 
       const matchRatio = targetWords.length > 0

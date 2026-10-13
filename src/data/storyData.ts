@@ -13,14 +13,13 @@ export const STORY_PAGES: StoryPage[] = [
     imageAlt: 'Max the little puppy proudly in the garden near the flowerpot',
     counterpointNote: 'The text says he is a brave watchdog, but he is just a tiny fluffy puppy!',
     sentences: [
-      { id: 'p1_s1', text: 'Max is a very brave dog.' },
-      { id: 'p1_s2', text: 'He guards the quiet garden.' },
+      { id: 'p1_s1', text: 'Max is a very brave dog.', practiceWords: ['brave'] },
+      { id: 'p1_s2', text: 'He guards the quiet garden.', practiceWords: ['guards'] },
     ],
     underlinedWords: [
       {
         word: 'brave',
         korean: '용감한',
-        phonetic: '/breɪv/',
         meaningEn: 'Not afraid of danger or hard things.',
         exampleSentence: 'Max is a very brave dog.',
         iconName: 'Shield',
@@ -41,8 +40,8 @@ export const STORY_PAGES: StoryPage[] = [
     imageAlt: 'A peaceful orange cat napping on the fence while Max hides nervously behind a flowerpot',
     counterpointNote: 'The text calls the cat a dangerous monster and says Max is calm, but Max is hiding in fear!',
     sentences: [
-      { id: 'p2_s1', text: 'A dangerous monster enters the yard.' },
-      { id: 'p2_s2', text: 'Max stays calm.' },
+      { id: 'p2_s1', text: 'A dangerous monster enters the yard.', practiceWords: ['dangerous', 'yard'] },
+      { id: 'p2_s2', text: 'Max stays calm.', practiceWords: ['calm'] },
     ],
     underlinedWords: [
       {
@@ -83,8 +82,8 @@ export const STORY_PAGES: StoryPage[] = [
     imageAlt: 'Max in the kitchen with peanut butter on his face and open jar on the floor',
     counterpointNote: 'The text says he never eats human snacks, but he is eating peanut butter from the jar!',
     sentences: [
-      { id: 'p3_s1', text: 'Max never eats human snacks.' },
-      { id: 'p3_s2', text: 'He loves healthy dog food.' },
+      { id: 'p3_s1', text: 'Max never eats human snacks.', practiceWords: ['never', 'snacks'] },
+      { id: 'p3_s2', text: 'He loves healthy dog food.', practiceWords: ['healthy'] },
     ],
     underlinedWords: [
       {
@@ -98,7 +97,6 @@ export const STORY_PAGES: StoryPage[] = [
       {
         word: 'healthy',
         korean: '건강에 좋은',
-        phonetic: '/ˈhelθi/',
         meaningEn: 'Good for keeping your body well and strong.',
         exampleSentence: 'He loves healthy dog food.',
         iconName: 'Apple',
@@ -111,14 +109,13 @@ export const STORY_PAGES: StoryPage[] = [
     imageAlt: 'Paper towel unrolled all the way on the floor with muddy paw prints',
     counterpointNote: 'The text says he helps clean the room and everything is neat, but it is a giant funny mess!',
     sentences: [
-      { id: 'p4_s1', text: 'He helps clean the living room.' },
-      { id: 'p4_s2', text: 'Everything is neat.' },
+      { id: 'p4_s1', text: 'He helps clean the living room.', practiceWords: ['clean'] },
+      { id: 'p4_s2', text: 'Everything is neat.', practiceWords: ['neat'] },
     ],
     underlinedWords: [
       {
         word: 'clean',
         korean: '청소하다, 깨끗한',
-        phonetic: '/kliːn/',
         meaningEn: 'To make free from dirt or mess.',
         exampleSentence: 'He helps clean the living room.',
         iconName: 'Sparkles',
@@ -126,7 +123,6 @@ export const STORY_PAGES: StoryPage[] = [
       {
         word: 'neat',
         korean: '깔끔한, 정돈된',
-        phonetic: '/niːt/',
         meaningEn: 'Tidy, in order, and well-arranged.',
         exampleSentence: 'Everything is neat.',
         iconName: 'CheckCircle',
@@ -139,14 +135,13 @@ export const STORY_PAGES: StoryPage[] = [
     imageAlt: 'Max jumping with joy in the backyard splashing mud in a puddle',
     counterpointNote: 'The text claims he always keeps his paws dry, but he is splashing in mud!',
     sentences: [
-      { id: 'p5_s1', text: 'Max loves rainy days.' },
-      { id: 'p5_s2', text: 'He always keeps his paws dry.' },
+      { id: 'p5_s1', text: 'Max loves rainy days.', practiceWords: ['rainy'] },
+      { id: 'p5_s2', text: 'He always keeps his paws dry.', practiceWords: ['paws'] },
     ],
     underlinedWords: [
       {
         word: 'rainy',
         korean: '비 오는',
-        phonetic: '/ˈreɪni/',
         meaningEn: 'Having a lot of rain.',
         exampleSentence: 'Max loves rainy days.',
         iconName: 'CloudRain',
@@ -167,7 +162,7 @@ export const STORY_PAGES: StoryPage[] = [
     imageAlt: 'Max leaping happily to catch a bright red ball in the air',
     counterpointNote: 'The text says he catches the ball gracefully, but he is having silly mud fun!',
     sentences: [
-      { id: 'p6_s1', text: 'Max catches the red ball in the air.' },
+      { id: 'p6_s1', text: 'Max catches the red ball in the air.', practiceWords: ['catches'] },
     ],
     underlinedWords: [
       {
@@ -200,8 +195,8 @@ export const STORY_PAGES: StoryPage[] = [
     imageAlt: 'Max splashing vigorously in the bathtub with bubbles floating around',
     counterpointNote: 'The text calls bath time his favorite hobby, but he is creating a huge bubble storm!',
     sentences: [
-      { id: 'p7_s1', text: "Bath time is Max's favorite hobby." },
-      { id: 'p7_s2', text: 'He jumps in happily.' },
+      { id: 'p7_s1', text: "Bath time is Max's favorite hobby.", practiceWords: ['favorite', 'hobby'] },
+      { id: 'p7_s2', text: 'He jumps in happily.', practiceWords: ['jumps in', 'happily'] },
     ],
     underlinedWords: [
       {
@@ -241,8 +236,8 @@ export const STORY_PAGES: StoryPage[] = [
     imageAlt: 'Soapy water splashing out of the tub onto flooded floors with bubbles popping',
     counterpointNote: 'The text says he is completely dry, but water and bubbles are flying everywhere!',
     sentences: [
-      { id: 'p8_s1', text: 'Now Max is completely dry.' },
-      { id: 'p8_s2', text: 'He is ready for bed.' },
+      { id: 'p8_s1', text: 'Now Max is completely dry.', practiceWords: ['completely'] },
+      { id: 'p8_s2', text: 'He is ready for bed.', practiceWords: ['ready'] },
     ],
     underlinedWords: [
       {
@@ -267,8 +262,8 @@ export const STORY_PAGES: StoryPage[] = [
     imageAlt: 'Max and the orange cat fast asleep on a cozy patchwork quilt under the moon',
     counterpointNote: 'The text claims he stays awake to protect the house, but he is sound asleep!',
     sentences: [
-      { id: 'p9_s1', text: 'Max stays awake all night.' },
-      { id: 'p9_s2', text: 'He protects the house.' },
+      { id: 'p9_s1', text: 'Max stays awake all night.', practiceWords: ['awake'] },
+      { id: 'p9_s2', text: 'He protects the house.', practiceWords: ['protects'] },
     ],
     underlinedWords: [
       {
@@ -292,25 +287,23 @@ export const STORY_PAGES: StoryPage[] = [
     pageNumber: 10,
     image: '/src/assets/images/page_bed_cuddle_1791733524900.jpg',
     imageAlt: 'Close-up of the puppy and tabby cat sleeping nose-to-nose peacefully',
-    counterpointNote: 'The text calls him a dangerous guard, but he is cuddling warmly with his cat friend.',
+    counterpointNote: 'The text calls him the bravest dog in the neighborhood, but he is cuddling warmly with his cat friend.',
     sentences: [
-      { id: 'p10_s1', text: 'He is the most dangerous guard in the neighborhood.' },
+      { id: 'p10_s1', text: 'He is the bravest dog in the neighborhood.', practiceWords: ['bravest', 'neighborhood'] },
     ],
     underlinedWords: [
       {
-        word: 'dangerous',
-        korean: '위험한',
-        phonetic: '/ˈdeɪndʒərəs/',
-        meaningEn: 'Able or likely to cause harm.',
-        exampleSentence: 'He is the most dangerous guard.',
-        iconName: 'Zap',
+        word: 'bravest',
+        korean: '가장 용감한',
+        meaningEn: 'Showing the most courage; having no fear.',
+        exampleSentence: 'He is the bravest dog in the neighborhood.',
+        iconName: 'Shield',
       },
       {
         word: 'neighborhood',
-        korean: '이웃, 동네',
-        phonetic: '/ˈneɪbərhʊd/',
+        korean: '동네',
         meaningEn: 'The area around where people live.',
-        exampleSentence: 'He is the most dangerous guard in the neighborhood.',
+        exampleSentence: 'He is the bravest dog in the neighborhood.',
         iconName: 'Home',
       },
     ],
@@ -327,7 +320,6 @@ export const INFERENCE_QUESTIONS: InferenceQuestion[] = [
     questionUnderlinedWord: {
       word: 'really',
       korean: '실제로, 진짜로',
-      phonetic: '/ˈriːəli/',
       meaningEn: 'In actual fact; truly.',
       exampleSentence: 'How does Max really feel?',
       iconName: 'Sparkles',
@@ -352,7 +344,6 @@ export const INFERENCE_QUESTIONS: InferenceQuestion[] = [
     questionUnderlinedWord: {
       word: 'happen',
       korean: '일어나다, 발생하다',
-      phonetic: '/ˈhæpən/',
       meaningEn: 'To take place or occur.',
       exampleSentence: 'What will happen next?',
       iconName: 'Clock',
@@ -377,7 +368,6 @@ export const INFERENCE_QUESTIONS: InferenceQuestion[] = [
     questionUnderlinedWord: {
       word: 'splash',
       korean: '물보라 (첨벙 튀는 것)',
-      phonetic: '/splæʃ/',
       meaningEn: 'Water or mud flying through the air.',
       exampleSentence: 'Look at the big splash.',
       iconName: 'CloudRain',
@@ -402,7 +392,6 @@ export const INFERENCE_QUESTIONS: InferenceQuestion[] = [
     questionUnderlinedWord: {
       word: 'bubbles',
       korean: '비누 거품',
-      phonetic: '/ˈbʌblz/',
       meaningEn: 'Round balls of soap and water.',
       exampleSentence: 'Look at the flying bubbles.',
       iconName: 'Sparkles',
@@ -439,8 +428,8 @@ export const INFERENCE_QUESTIONS: InferenceQuestion[] = [
     correctIndex: 0,
     hint: 'Look closely at Max and the orange cat sleeping under the warm blanket!',
     hintKr: '따뜻한 이불 속에서 곤히 잠든 맥스와 고양이를 자세히 보세요!',
-    explanation: 'The text says Max is a dangerous guard, but the picture shows him sleeping peacefully with his cat friend!',
-    explanationKr: '글에서는 가장 무서운 경비견이라고 했지만, 그림에서는 고양이 친구와 함께 평화롭게 쿨쿨 자고 있어요!',
+    explanation: 'The text says Max is the bravest dog in the neighborhood, but the picture shows him sleeping peacefully with his cat friend!',
+    explanationKr: '글에서는 동네에서 가장 용감한 개라고 했지만, 그림에서는 고양이 친구와 함께 평화롭게 쿨쿨 자고 있어요!',
   },
 ];
 

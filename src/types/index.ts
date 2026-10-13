@@ -11,6 +11,7 @@ export interface WordDefinition {
 export interface StorySentence {
   id: string;
   text: string;
+  practiceWords?: string[];
 }
 
 export interface StoryPage {
